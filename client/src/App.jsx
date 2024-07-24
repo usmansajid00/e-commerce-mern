@@ -1,7 +1,8 @@
-import { lazy } from "react";
+import { lazy, useState } from "react";
 import { lightTheme } from "./utils/Themes";
 import styled, { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Authentication from "./pages/Authentication";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Home = lazy(() => import("./pages/Home"));
@@ -19,14 +20,18 @@ const Container = styled.div`
 `;
 
 const App = () => {
+  const [openAuth, setOpenAuth] = useState(false);
   return (
     <ThemeProvider theme={lightTheme}>
       <BrowserRouter>
         <Container>
-          <Navbar />
+          <Navbar setOpenAuth={setOpenAuth} />
           <Routes>
             <Route path="/" exact element={<Home />} />
           </Routes>
+          {openAuth && (
+            <Authentication openAuth={openAuth} setOpenAuth={setOpenAuth} />
+          )}
         </Container>
       </BrowserRouter>
     </ThemeProvider>
