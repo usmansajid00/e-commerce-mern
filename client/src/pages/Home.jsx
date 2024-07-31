@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import HeaderImg from "../utils/Images/Header.png";
+import { category } from "../utils/data";
+import ProductCategoryCard from "../components/cards/ProductCategoryCard";
+import ProductCard from "../components/cards/ProductCard";
 
 const Container = styled.div`
   padding: 20px 30px;
@@ -35,15 +38,35 @@ const Title = styled.div`
   justify-content: ${({ center }) => (center ? "center" : "space-between")};
   align-items: center;
 `;
+const CardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+`;
 
 const Home = () => {
   return (
     <Container>
       <Section style={{ alignItems: "center" }}>
         <Img src={HeaderImg} />
-      </Section>{" "}
-      <Section style={{ alignItems: "center" }}>
+      </Section>
+      <Section>
         <Title>Shop by Categories</Title>
+        <CardWrapper>
+          {category.map((category) => (
+            <ProductCategoryCard category={category} />
+          ))}
+        </CardWrapper>
+      </Section>
+      <Section>
+        <Title center>Our BestSellers</Title>
+        <CardWrapper>
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </CardWrapper>
       </Section>
     </Container>
   );
