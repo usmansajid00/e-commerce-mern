@@ -2,11 +2,12 @@ import { lazy, useState } from "react";
 import { lightTheme } from "./utils/Themes";
 import styled, { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Authentication from "./pages/Authentication";
-import ShopListing from "./pages/ShopListing";
 
 const Navbar = lazy(() => import("./components/Navbar"));
 const Home = lazy(() => import("./pages/Home"));
+const Authentication = lazy(() => import("./pages/Authentication"));
+const ShopListing = lazy(() => import("./pages/ShopListing"));
+const Favourite = lazy(() => import("./pages/Favourite"));
 
 const Container = styled.div`
   width: 100%;
@@ -30,6 +31,7 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/shop" exact element={<ShopListing />} />
+            <Route path="/favourite" exact element={<Favourite />} />
           </Routes>
           {openAuth && (
             <Authentication openAuth={openAuth} setOpenAuth={setOpenAuth} />
