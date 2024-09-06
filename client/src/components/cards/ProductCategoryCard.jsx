@@ -1,5 +1,6 @@
-import { styled } from "styled-components";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Card = styled.div`
   width: 250px;

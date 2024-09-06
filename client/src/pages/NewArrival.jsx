@@ -1,5 +1,9 @@
-const NewArrival = () => {
-  return <div>NewArrival</div>;
-};
+import React from 'react'
 
-export default NewArrival;
+const NewArrival = () => {
+  return (
+    <div>NewArrival</div>
+  )
+}
+
+export default NewArrival
